@@ -64,6 +64,9 @@ int createRandomLoShu() {
     int i, j, k, sum1, sum2, sum3, sum4, sum5;
     int loshu[3][3];
     int flag = 1;
+    int count = 0;
+
+    for (;;) {
 
     //initialize the Lo Shu square with random numbers
     int numbers[9] = {-1, -1, -1, -1, -1, -1, -1, -1, -1};
@@ -88,11 +91,16 @@ int createRandomLoShu() {
 
     //check if the generated square is a magic square
     if (isMagicSquare(loshu) == 1) {
-        printf("Generated Lo Shu square is a magic square\n");
-    } else {
-        printf("Generated Lo Shu square is not a magic square\n");
+        break;
+    } 
+    else {
+        count++;
+    }
     }
     
+    printf("Count: %d", count);
+    printLoShu(loshu);
+
     return 0;
 }
 
