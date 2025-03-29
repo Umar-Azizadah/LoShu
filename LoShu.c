@@ -49,13 +49,49 @@ int isMagicSquare(int a[3][3]) {
     int sum1, sum2, sum3, sum4, sum5;
     int i, j;
 
-    // Calculate the sums of rows, columns and diagonals
+    //calculate the sums of rows, columns and diagonals
     sum1 = a[0][0] + a[0][1] + a[0][2];
     sum2 = a[1][0] + a[1][1] + a[1][2];
     sum3 = a[2][0] + a[2][1] + a[2][2];
     sum4 = a[0][0] + a[1][0] + a[2][0];
     sum5 = a[0][2] + a[1][1] + a[2][0];
 
-    // Check if all sums are equal
+    //check if all sums are equal
     return (sum1 == sum2 && sum2 == sum3 && sum4 == sum5 && sum1 == sum4);
+}
+
+int createRandomLoShu() {
+    int i, j, k, sum1, sum2, sum3, sum4, sum5;
+    int loshu[3][3];
+    int flag = 1;
+
+    //initialize the Lo Shu square with random numbers
+    int numbers[9] = {-1, -1, -1, -1, -1, -1, -1, -1, -1};
+    for (i = 0; i < 3; i++) {
+        for (j = 0; j < 3; j++) {
+            for (;;) {
+                int num = rand() % 9 + 1;
+                //check if the number is already used
+                for (k = 0; k < 9; k++) {
+                    if (numbers[k] == num) {
+                        num = -1;
+                        break;
+                    }
+                }
+                if (num != -1) {
+                    loshu[i][j] = rand() % 9 + 1;
+                    break;
+                }
+            }
+        }
+    }
+
+    //check if the generated square is a magic square
+    if (isMagicSquare(loshu) == 1) {
+        printf("Generated Lo Shu square is a magic square\n");
+    } else {
+        printf("Generated Lo Shu square is not a magic square\n");
+    }
+    
+    return 0;
 }
