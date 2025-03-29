@@ -1,6 +1,9 @@
 #include <stdio.h>
+#include <stdlib.h>
 
 int isMagicSquare(int a[3][3]);
+void printLoShu(int a[3][3]);
+int createRandomLoShu();
 
 int main(void) {
     int i, j, k, sum1, sum2, sum3, sum4, sum5;
@@ -42,7 +45,7 @@ int main(void) {
         printf("no_loshu is not a magic square\n");
     }
     
-    
+    createRandomLoShu();
 }
 
 int isMagicSquare(int a[3][3]) {
@@ -98,7 +101,7 @@ int createRandomLoShu() {
     }
     }
     
-    printf("Count: %d", count);
+    printf("Count: %d\n", count);
     printLoShu(loshu);
 
     return 0;
